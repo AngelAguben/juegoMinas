@@ -48,19 +48,22 @@ public class Juego extends javax.swing.JFrame {
         botones.add(jButton16);
 
         ImageIcon img = new ImageIcon("imagenes/demeter.png");
-//        ponerImagenesABotones(rutas, botones);
+        for (JButton boton : botones) {
+            ponerImagenesABotones(rutas, boton);
+        }
 
         // 
         // Prueba de que coge aleatoriamente las rutas
     }
 
-    public static void ponerImagenesABotones(ArrayList<String> rutas, ArrayList<JButton> botones) {
+    public static void ponerImagenesABotones(ArrayList<String> rutas, JButton boton) {
 
-        int alea = random.nextInt(rutas.size()) + 1;
-        for (JButton boton : botones) {
-            ImageIcon rutasAlea = new ImageIcon(rutas.get(alea));
-            boton.setIcon(rutasAlea);
-        }
+//        int alea = random.nextInt(rutas.size())+1;
+        int alea = random.nextInt(rutas.size());
+//        for (JButton boton : botones) {
+        ImageIcon rutasAlea = new ImageIcon(rutas.get(alea));
+        boton.setIcon(rutasAlea);
+//        }
 
     }
 
