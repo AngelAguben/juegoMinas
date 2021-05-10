@@ -58,13 +58,14 @@ public class Juego extends javax.swing.JFrame {
 
     public static void ponerImagenesABotones(ArrayList<String> rutas, JButton boton) {
 
-//        int alea = random.nextInt(rutas.size())+1;
         int alea = random.nextInt(rutas.size());
-//        for (JButton boton : botones) {
         ImageIcon rutasAlea = new ImageIcon(rutas.get(alea));
         boton.setIcon(rutasAlea);
-//        }
-
+        rutas.remove(alea);
+        System.out.println("---");
+        for (String ruta : rutas) {
+            System.out.println(ruta);
+        }
     }
 
     /**
@@ -301,7 +302,7 @@ public class Juego extends javax.swing.JFrame {
         for (int i = 0; i < 2; i++) {
             rutas.add("imagenes/detectorMinas.png");
             rutas.add("imagenes/dron.png");
-            rutas.add("imagenes/mina.png");
+            rutas.add("imagenes/mina.jpg");
             rutas.add("imagenes/mundo.png");
             rutas.add("imagenes/protesis.png");
             rutas.add("imagenes/rata.png");
