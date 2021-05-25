@@ -20,16 +20,20 @@ public class Juego extends javax.swing.JFrame {
     /**
      * Creates new form Juego
      */
+    // Crea un Random static para poder utilizarlo en métodos de la clase
     private static Random random = new Random();
     // Accede al método meterRutas para crear el ArrayList rutas con las 
     // direcciones de las imágenes
     private static ArrayList<String> rutas = meterRutas();
+    // Crea una lista de JButton llamada botones
     private static ArrayList<JButton> botones = new ArrayList<>();
 
+    // Iniciamos el constructor del juego
     public Juego() {
-        int alea = 0;
         initComponents();
 
+        // Añade cada botón a la lista creada anteriormente para la seleccion de 
+        // imagenes posteriormente
         botones.add(jButton1);
         botones.add(jButton2);
         botones.add(jButton3);
@@ -47,25 +51,30 @@ public class Juego extends javax.swing.JFrame {
         botones.add(jButton15);
         botones.add(jButton16);
 
-        ImageIcon img = new ImageIcon("imagenes/demeter.png");
+        // Crea un objeto de tipo ImageIcon con la ruta de la imagen del Demeter
+        // que será la inicial del proyecto
+        ImageIcon imgDemeter = new ImageIcon("imagenes/demeter.png");
+        // Por cada boton de la lista de botones
         for (JButton boton : botones) {
+            // Llamaremos al método ponerImagenesABotones y le meteremos la 
+            // lista de String que contiene las rutas y el JButton llamado boton
             ponerImagenesABotones(rutas, boton);
         }
-
-        // 
-        // Prueba de que coge aleatoriamente las rutas
     }
 
+    // Método para insertar las imagenes a los botones, pasándole por parámetros 
+    // una lista de Strings y un JButton
     public static void ponerImagenesABotones(ArrayList<String> rutas, JButton boton) {
-
+        // Creamos un int y su valor será un número aleatorio entre 0 y la longitud 
+        // del ArrayList
         int alea = random.nextInt(rutas.size());
-        ImageIcon rutasAlea = new ImageIcon(rutas.get(alea));
-        boton.setIcon(rutasAlea);
+        // Creamos un nuevo ImageIcon y tendrá el valor de la posicion de la 
+        // ruta con el número que alea tenga
+        ImageIcon rutaAleatoriaParaFoto = new ImageIcon(rutas.get(alea));
+        // Pondremos al boton el icono de la ImageIcon 
+        boton.setIcon(rutaAleatoriaParaFoto);
+        // Borra la ruta aleatoria seleccionada para que no se repita
         rutas.remove(alea);
-        System.out.println("---");
-        for (String ruta : rutas) {
-            System.out.println(ruta);
-        }
     }
 
     /**
@@ -288,13 +297,10 @@ public class Juego extends javax.swing.JFrame {
         });
     }
 
-//    // Este método meterá todos los botones en una lista
-//    public ArrayList<JButton> meterBotonesEnLista() {
-//
-//        return botones;
-//    }
-    // Esté método servirá para meter las rutas en el ArrayList
+    // Esté método servirá para meter las rutas en el ArrayList creado y que 
+    // devolverá posteriormente
     public static ArrayList<String> meterRutas() {
+        // Creearé 
         ArrayList<String> rutas = new ArrayList<>();
         // Esto lo que hará es meter las rutas 2 veces con idea de que haya dos 
         // imagenes para crear una pareja y cuando se meta una en una imagen, se
@@ -311,10 +317,6 @@ public class Juego extends javax.swing.JFrame {
         }
         // Coge la lista y mezcla los valores para que sean aleatorios
         Collections.shuffle(rutas);
-        // Muestra todas las rutas
-        for (String ruta : rutas) {
-            System.out.println(ruta);
-        }
         return rutas;
     }
 
