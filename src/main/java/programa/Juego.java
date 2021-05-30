@@ -288,7 +288,7 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
             cambiarImagen(botonPulsado, rutaActual);
             segundoBoton = botonPulsado;
 
-            if (rutaComprobar.equals(rutaActual)) {
+            if (rutaComprobar.equals(rutaActual) && !botonComprobar.getName().equals(botonPulsado.getName())) {
                 botonPulsado.setEnabled(false);
                 botonComprobar.setEnabled(false);
 
