@@ -18,6 +18,9 @@ public class PantallaInicio extends javax.swing.JFrame {
      */
     public PantallaInicio() {
         initComponents();
+        //Este metodo centra la ventana de forma relativa a un componente
+        //que le pasemos, al pasarle null centra la ventana en el centro de la pantalla
+        setLocationRelativeTo(null);
         ImageIcon imgDemeter = new ImageIcon("imagenes/demeter.png");
         jButton2.setIcon(imgDemeter);
         jTextArea2.setEditable(false);

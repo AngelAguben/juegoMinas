@@ -11,8 +11,8 @@ import javax.swing.JButton;
  *
  * @author daniel
  */
-public class Botones extends JButton{
-    
+public class Botones extends JButton {
+
     private JButton boton;
     private String nombre;
     private String ruta;
@@ -56,6 +56,5 @@ public class Botones extends JButton{
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    
+
 }
