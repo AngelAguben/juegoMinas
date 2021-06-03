@@ -1,10 +1,11 @@
 programa\JuegoEnEspanol.class
+programa\PantallaInicioIngles.class
+programa\PantallaInicioEspanol$1.class
 programa\SelectorDeIdiomas$1.class
 programa\JuegoEnIngles.class
-programa\PantallaInicio$1.class
 programa\Botones.class
-programa\Juego.class
+programa\SelectorDeIdiomas$3.class
+programa\PantallaInicioEspanol.class
 programa\SelectorDeIdiomas$2.class
 programa\SelectorDeIdiomas.class
-programa\PantallaInicio.class
-programa\PantallaInicio$2.class
+programa\PantallaInicioIngles$1.class

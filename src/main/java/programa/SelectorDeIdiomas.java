@@ -20,6 +20,9 @@ public class SelectorDeIdiomas extends javax.swing.JFrame {
         initComponents();
         ImageIcon imgDemeter = new ImageIcon("imagenes/demeter.png");
         jButton3.setIcon(imgDemeter);
+        //Este metodo centra la ventana de forma relativa a un componente
+        //que le pasemos, al pasarle null centra la ventana en el centro de la pantalla
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -94,18 +97,54 @@ public class SelectorDeIdiomas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JuegoEnIngles juegoIngles = new JuegoEnIngles();
-        juegoIngles.setResizable(false);
-        juegoIngles.setVisible(true);
+        PantallaInicioIngles inicioIN = new PantallaInicioIngles();
+        inicioIN.setResizable(false);
+        inicioIN.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JuegoEnEspanol juegoEspanol = new JuegoEnEspanol();
-        juegoEspanol.setResizable(false);
-        juegoEspanol.setVisible(true);
-
+        PantallaInicioEspanol inicioES = new PantallaInicioEspanol();
+        inicioES.setResizable(false);
+        inicioES.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PantallaInicioIngles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PantallaInicioIngles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PantallaInicioIngles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PantallaInicioIngles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SelectorDeIdiomas().setVisible(true);
+
+            }
+        });
+    }
     /**
      * @param args the command line arguments
      */
