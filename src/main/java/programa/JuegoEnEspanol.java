@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Ángel
  */
-public class Juego extends javax.swing.JFrame implements ActionListener {
+public class JuegoEnEspanol extends javax.swing.JFrame implements ActionListener {
 
     //ArrayList donde guardmos todos los botones que tenemos en nuestro juego
     private final ArrayList<JButton> botones = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
 
     private static HashMap<String, String> mapaTextosInformativos = meterTextosInformativos();
 
-    public Juego() {
+    public JuegoEnEspanol() {
         //Este metodo inicializa los componentes del juego
         initComponents();
         //Esto evita que el usuario cambie el tamaño de la ventana del juego
@@ -224,42 +224,7 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        // Variables para poner las fotos aleatoriamente
-//
-//        // Aquí llamaremos al método para meter las rutas en las imágenes
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(Juego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(() -> {
-//            new Juego().setVisible(true);
-//            //Asignamos las rutas en posiciones aleatorias al atributo rutasAleatorias
-//        });
-//    }
+
     //En este metodo entrara cada vez que se pulse cualquier botón
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -288,7 +253,7 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
             cambiarImagen(botonPulsado, rutaActual);
             segundoBoton = botonPulsado;
 
-            if (rutaComprobar.equals(rutaActual) && !botonComprobar.getName().equals(botonPulsado.getName())) {
+           if (rutaComprobar.equals(rutaActual) && !botonComprobar.getName().equals(botonPulsado.getName())) {
                 botonPulsado.setEnabled(false);
                 botonComprobar.setEnabled(false);
 
@@ -325,6 +290,40 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
         }
 
         return listaRutas;
+
+    }
+
+    //Metodo al cual le pasamos una ruta de una imagen y un botton, 
+    //crea un nuevo icono con esa ruta y se lo asigna al boton. 
+    //CAmbiando la imgen del botón
+    private static void cambiarImagen(JButton botonCambiar, String ruta) {
+        ImageIcon imagenNueva = new ImageIcon(ruta);
+        botonCambiar.setIcon(imagenNueva);
+    }
+
+    //Este metodo genera un arrayList de tamaño 16 (número de rutas totales en String), 
+    //que le asignara las rutas a cada bóton. Este array cada vez que comience el juego
+    //se generara pero con las rutas en posiciones aleatorias, para que los botones
+    //tengan cada vez imagenes aleatorias. Ejemplo: El boton jButton1 cojera la ruta
+    //de la posicion 1 del array, el jButton2 cojera la 2 posición ...
+    public static String[] asignacionAleatorio() {
+
+        ArrayList<String> listaRutas = meterRutas();
+        Random random = new Random();
+        String[] ruta = new String[16];
+        int aleatorio;
+
+        for (int i = 0; i < ruta.length; i++) {
+
+            aleatorio = random.nextInt(listaRutas.size());
+
+            ruta[i] = listaRutas.get(aleatorio);
+
+            listaRutas.remove(aleatorio);
+
+        }
+
+        return ruta;
 
     }
 
@@ -372,7 +371,7 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
                 + "\n genitales, lesiones musculares y en órganos internos, o quemaduras.");
         mapaTextos.put("rata", " Una ONG utiliza ratas gigantes para la remoción de "
                 + "\n minas antipersona. Estos animales son entrenados para "
-                + "\n detectar el trinitrotolueno (TNT) . Esta ONG ya ha apoyado "
+                + "\n detectar el trinitrotolueno (TNT). Esta ONG ya ha apoyado "
                 + "\n la eliminación de minas en Angola, Mozambique y Camboya."
                 + "\n Las ratas pueden caminar en los campos minados olfateando "
                 + "\n sin activar los explosivos. Una vez localizadas, el personal "
@@ -392,40 +391,6 @@ public class Juego extends javax.swing.JFrame implements ActionListener {
 
         // Y aquí devolveremos el mapa
         return mapaTextos;
-
-    }
-
-    //Metodo al cual le pasamos una ruta de una imagen y un botton, 
-    //crea un nuevo icono con esa ruta y se lo asigna al boton. 
-    //CAmbiando la imgen del botón
-    private static void cambiarImagen(JButton botonCambiar, String ruta) {
-        ImageIcon imagenNueva = new ImageIcon(ruta);
-        botonCambiar.setIcon(imagenNueva);
-    }
-
-    //Este metodo genera un arrayList de tamaño 16 (número de rutas totales en String), 
-    //que le asignara las rutas a cada bóton. Este array cada vez que comience el juego
-    //se generara pero con las rutas en posiciones aleatorias, para que los botones
-    //tengan cada vez imagenes aleatorias. Ejemplo: El boton jButton1 cojera la ruta
-    //de la posicion 1 del array, el jButton2 cojera la 2 posición ...
-    public static String[] asignacionAleatorio() {
-
-        ArrayList<String> listaRutas = meterRutas();
-        Random random = new Random();
-        String[] ruta = new String[16];
-        int aleatorio;
-
-        for (int i = 0; i < ruta.length; i++) {
-
-            aleatorio = random.nextInt(listaRutas.size());
-
-            ruta[i] = listaRutas.get(aleatorio);
-
-            listaRutas.remove(aleatorio);
-
-        }
-
-        return ruta;
 
     }
 
